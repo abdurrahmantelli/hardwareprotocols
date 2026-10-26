@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "author": "Abdurrahman Telli",
+  "editor": "wokwi",
+  "parts": [
+    { "type": "board-esp32-devkit-c-v4", "id": "esp", "top": 0, "left": 177.64, "attrs": {} },
+    {
+      "type": "board-ssd1306",
+      "id": "oled1",
+      "top": -83.26,
+      "left": 38.63,
+      "attrs": { "i2cAddress": "0x3c" }
+    },
+    { "type": "board-bmp180", "id": "bmp1", "top": 130.24, "left": -47.74, "attrs": {} },
+    { "type": "wokwi-ds1307", "id": "rtc1", "top": 129, "left": 374.5, "attrs": {} },
+    { "type": "wokwi-microsd-card", "id": "sd1", "top": -105.37, "left": 451.27, "attrs": {} },
+    { "type": "wokwi-potentiometer", "id": "pot1", "top": 238.7, "left": 105.4, "attrs": {} },
+    { "type": "wokwi-led", "id": "led1", "top": -13.2, "left": -121, "attrs": { "color": "red" } },
+    {
+      "type": "wokwi-resistor",
+      "id": "r1",
+      "top": 61.55,
+      "left": -163.2,
+      "attrs": { "value": "220" }
+    }
+  ],
+  "connections": [
+    [ "esp:TX", "$serialMonitor:RX", "", [] ],
+    [ "esp:RX", "$serialMonitor:TX", "", [] ],
+    [ "esp:17", "esp:16", "yellow", [ "v0" ] ],
+    [ "oled1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "oled1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "oled1:SDA", "esp:21", "green", [ "v0" ] ],
+    [ "oled1:SCL", "esp:22", "green", [ "v0" ] ],
+    [ "bmp1:SDA", "esp:21", "green", [ "v0" ] ],
+    [ "bmp1:SCL", "esp:22", "green", [ "v0" ] ],
+    [ "bmp1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "bmp1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "rtc1:SDA", "esp:21", "green", [ "v0" ] ],
+    [ "rtc1:SCL", "esp:22", "green", [ "v0" ] ],
+    [ "rtc1:5V", "esp:5V", "red", [ "v0" ] ],
+    [ "rtc1:GND", "esp:GND.2", "black", [ "v0" ] ],
+    [ "sd1:VCC", "esp:3V3", "red", [ "h0" ] ],
+    [ "sd1:GND", "esp:GND.1", "black", [ "h0" ] ],
+    [ "esp:5", "sd1:CS", "green", [ "h0" ] ],
+    [ "sd1:SCK", "esp:18", "green", [ "h0" ] ],
+    [ "sd1:DO", "esp:19", "green", [ "h0" ] ],
+    [ "esp:23", "sd1:DI", "green", [ "h0" ] ],
+    [ "pot1:VCC", "esp:3V3", "red", [ "v0" ] ],
+    [ "pot1:GND", "esp:GND.1", "black", [ "v0" ] ],
+    [ "pot1:SIG", "esp:34", "purple", [ "v0" ] ],
+    [ "r1:1", "esp:2", "orange", [ "v0" ] ],
+    [ "r1:2", "led1:A", "red", [ "v0" ] ],
+    [ "led1:C", "esp:GND.2", "black", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
